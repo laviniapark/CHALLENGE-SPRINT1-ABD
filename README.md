@@ -36,6 +36,10 @@ Listagem de Motos
 
 ## Configuração do Ambiente
 
+**IMPORTANTE**
+
+Clone o repositório e cole ele no terminal para poder rodá-lo em sua IDE
+
 ### 1. Requisitos
 
 - .NET SDK 8.0 ou superior instalado (https://dotnet.microsoft.com/en-us/download)
