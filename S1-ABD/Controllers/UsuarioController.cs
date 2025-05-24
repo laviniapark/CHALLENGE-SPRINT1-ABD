@@ -59,7 +59,7 @@ public class UsuarioController : Controller
     }
 
 
-    [HttpGet("edit")]
+    [HttpGet("edit/{id}")]
     public async Task<IActionResult> Edit(int id)
     {
         var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
@@ -70,7 +70,7 @@ public class UsuarioController : Controller
         return View(usuario);
     }
 
-    [HttpPost("edit")]
+    [HttpPost("edit/{id}")]
     public async Task<IActionResult> Edit(UsuarioDTO usuarioDto)
     {
         if (ModelState.IsValid)
@@ -81,7 +81,7 @@ public class UsuarioController : Controller
         return View(usuarioDto);
     }
 
-    [HttpGet("delete")]
+    [HttpGet("delete/{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
@@ -92,10 +92,10 @@ public class UsuarioController : Controller
         return View(usuario);
     }
 
-    [HttpPost("delete"), ActionName("DeleteConfirmed")]
+    [HttpPost, ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _usuarioService.DeleteUsuarioAsync(id);
-        return RedirectToAction("Index");
+        return RedirectToAction("");
     }
 }

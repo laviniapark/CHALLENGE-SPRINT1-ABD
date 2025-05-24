@@ -46,7 +46,7 @@ public class MotoController : Controller
         return View(motoDto);
     }
 
-    [HttpGet("edit")]
+    [HttpGet("edit/{id}")]
     public async Task<IActionResult> Edit(int id)
     {
         var moto = await _motoService.GetMotoByIdAsync(id);
@@ -57,7 +57,7 @@ public class MotoController : Controller
         return View(moto);
     }
 
-    [HttpPost("edit")]
+    [HttpPost("edit/{id}")]
     public async Task<IActionResult> Edit(MotoDTO motoDto)
     {
         if (ModelState.IsValid)
@@ -68,7 +68,7 @@ public class MotoController : Controller
         return View(motoDto);
     }
 
-    [HttpGet("delete")]
+    [HttpGet("delete/{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         var moto = await _motoService.GetMotoByIdAsync(id);
@@ -79,10 +79,10 @@ public class MotoController : Controller
         return View(moto);
     }
 
-    [HttpPost("delete"), ActionName("DeleteConfirmed")]
+    [HttpPost, ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _motoService.DeleteMotoAsync(id);
-        return RedirectToAction("Index");
+        return RedirectToAction("");
     }
 }

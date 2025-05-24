@@ -12,7 +12,7 @@ using S1_ABD.Data;
 namespace S1_ABD.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250523225624_TabelasIniciais")]
+    [Migration("20250524013301_TabelasIniciais")]
     partial class TabelasIniciais
     {
         /// <inheritdoc />
@@ -29,52 +29,63 @@ namespace S1_ABD.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_moto");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Ano")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("ano");
 
                     b.Property<int>("IsUsing")
-                        .HasColumnType("NUMBER(1)");
+                        .HasColumnType("NUMBER(1)")
+                        .HasColumnName("em_uso");
 
                     b.Property<string>("Marca")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("marca");
 
                     b.Property<string>("Modelo")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("modelo");
 
                     b.Property<string>("Placa")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("placa");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Motos");
+                    b.ToTable("TBL_MOTOS");
                 });
 
             modelBuilder.Entity("S1_ABD.Models.RegistroUso", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_registro");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Devolucao")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("dt_devolucao");
 
                     b.Property<int>("MotoId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_moto");
 
                     b.Property<DateTime>("Retirada")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("dt_retirada");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_usuario");
 
                     b.HasKey("Id");
 
@@ -82,32 +93,36 @@ namespace S1_ABD.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("RegistroUsos");
+                    b.ToTable("TBL_REGISTROS");
                 });
 
             modelBuilder.Entity("S1_ABD.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_usuario");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("cpf");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("nome_usuario");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("telefone");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("TBL_USUARIOS");
                 });
 
             modelBuilder.Entity("S1_ABD.Models.RegistroUso", b =>

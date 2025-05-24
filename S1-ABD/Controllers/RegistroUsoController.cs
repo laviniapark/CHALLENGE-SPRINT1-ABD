@@ -52,7 +52,7 @@ public class RegistroUsoController : Controller
         return View(registroDto);
     }
 
-    [HttpGet("edit")]
+    [HttpGet("edit/{id}")]
     public async Task<IActionResult> Edit(int id)
     {
         var registro = await _registroService.GetRegistroByIdAsync(id);
@@ -66,7 +66,7 @@ public class RegistroUsoController : Controller
         return View(registro);
     }
 
-    [HttpPost("edit")]
+    [HttpPost("edit/{id}")]
     public async Task<IActionResult> Edit(RegistroUsoDTO registroDto)
     {
         if (ModelState.IsValid)
@@ -77,7 +77,7 @@ public class RegistroUsoController : Controller
         return View(registroDto);
     }
 
-    [HttpGet("delete")]
+    [HttpGet("delete/{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         var registro = await _registroService.GetRegistroByIdAsync(id);
@@ -88,7 +88,7 @@ public class RegistroUsoController : Controller
         return View(registro);
     }
 
-    [HttpPost("delete"), ActionName("DeleteConfirmed")]
+    [HttpPost, ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _registroService.DeleteRegistroAsync(id);
