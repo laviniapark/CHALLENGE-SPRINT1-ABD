@@ -45,14 +45,14 @@ public class UsuarioController : Controller
         return View(usuarioDto);
     }
 
-    [HttpGet("Usuario/cpf/{cpf}")]
+    [HttpGet("cpf/{cpf}")]
     public async Task<IActionResult> GetByCpf(string cpf)
     {
         var usuario = await _usuarioService.GetUsuarioByCpfAsync(cpf);
 
         if (usuario == null)
         {
-            return NotFound();
+            return View("UsuarioNaoEncontrado");
         }
 
         return View(usuario);
