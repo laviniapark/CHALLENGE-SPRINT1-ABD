@@ -1,0 +1,29 @@
+@model S1_ABD.DTOs.MotoDTO
+
+@{
+    ViewData["Title"] = "Excluir Moto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Tem certeza que deseja excluir esta moto?</h3>
+
+<div>
+    <p><strong>Marca :</strong> @Model.Marca</p>
+    <p><strong>Modelo :</strong> @Model.Modelo</p>
+    <p><strong>Ano :</strong> @Model.Ano</p>
+    <p><strong>Placa :</strong> @Model.Placa</p>
+    <p><strong>Em uso :</strong> @Model.IsUsing</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id"/>
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a class="btn btn-secondary" href="/Moto">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

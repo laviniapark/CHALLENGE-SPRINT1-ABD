@@ -1,0 +1,47 @@
+@model S1_ABD.DTOs.RegistroUsoDTO
+
+@{
+    ViewData["Title"] = "Adicionar Registro";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+
+    <div class="form-group">
+        <label asp-for="UsuarioId" class="control-label">Cliente</label>
+        <select asp-for="UsuarioId" asp-items="Model.UsuariosDropdown" class="form-control">
+            <option value="">-- Selecione um usuário --</option>
+        </select>
+        <span asp-validation-for="UsuarioId" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="MotoId" class="control-label">Moto</label>
+        <select asp-for="MotoId" asp-items="Model.MotosDropdown" class="form-control">
+            <option value="">-- Selecione uma moto --</option>
+        </select>
+        <span asp-validation-for="MotoId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Retirada" class="form-label">Data de Retirada</label>
+        <input asp-for="Retirada" class="form-control" required/>
+        <span asp-validation-for="Retirada" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Devolucao" class="form-label">Data de Devolução</label>
+        <input asp-for="Devolucao" class="form-control" required/>
+        <span asp-validation-for="Devolucao" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a class="btn btn-secondary" href="/RegistroUso">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

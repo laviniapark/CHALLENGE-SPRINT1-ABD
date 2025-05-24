@@ -1,0 +1,35 @@
+@model IEnumerable<S1_ABD.DTOs.RegistroUsoDTO>
+
+@{
+    ViewData["Title"] = "Lista de Registros";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a class="btn btn-primary mb-3" href="/RegistroUso/Create">Adicionar Registro</a>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Moto</th>
+        <th>Data de Retirada</th>
+        <th>Data de Devolução</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var registro in Model)
+    {
+        <tr>
+            <td>@registro.UsuarioNome</td>
+            <td>@registro.MotoPlaca</td>
+            <td>@registro.Retirada</td>
+            <td>@registro.Devolucao</td>
+            <td>
+                <a class="btn btn-warning" href="/RegistroUso/Edit/@registro.Id">Editar</a>
+                <a class="btn btn-danger" href="/RegistroUso/Delete/@registro.Id">Excluir</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

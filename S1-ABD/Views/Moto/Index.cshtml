@@ -1,0 +1,37 @@
+@model IEnumerable<S1_ABD.DTOs.MotoDTO>
+
+@{
+    ViewData["Title"] = "Lista de Motos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a class="btn btn-primary mb-3" href="/Moto/Create">Adicionar Moto</a>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Placa</th>
+        <th>Em uso?</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var moto in Model)
+        {
+            <tr>
+                <td>@moto.Marca</td>
+                <td>@moto.Modelo</td>
+                <td>@moto.Ano</td>
+                <td>@moto.Placa</td>
+                <td>@(moto.IsUsing ? "Sim" : "Não")</td>
+                <td>
+                    <a class="btn btn-warning" href="/Moto/Edit/@moto.Id">Editar</a>
+                    <a class="btn btn-danger" href="/Moto/Delete/@moto.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
