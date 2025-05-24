@@ -81,9 +81,9 @@ Assim que o programa for iniciado, o Swagger irá ser aberto de início.
 
 Para avançar para a página web inicial, basta mudar a URL para: http://localhost:5192/Home
 
-Agora, podemos começar a testar as funcionalidades!
+**Agora, podemos começar a testar as funcionalidades!**
 
-É necessário criar ao menos um cliente e uma moto para que seja possível criar depois o registro.
+*É necessário criar ao menos um cliente e uma moto para que seja possível criar depois o registro.*
 
 Todo o processo de acesso a cada categoria pode ser feito diretamente pela barra de menu superior.
 
