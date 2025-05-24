@@ -4,6 +4,7 @@ using S1_ABD.Service;
 
 namespace S1_ABD.Controllers;
 
+[Route("Usuario")]
 public class UsuarioController : Controller
 {
     private readonly UsuarioService _usuarioService;
@@ -13,19 +14,20 @@ public class UsuarioController : Controller
         _usuarioService = usuarioService;
     }
 
+    [HttpGet("")]
     public async Task<IActionResult> Index()
     {
         var usuarios = await _usuarioService.GetAllUsuariosAsync();
         return View(usuarios);
     }
 
-    [HttpGet]
+    [HttpGet("create")]
     public IActionResult Create()
     {
         return View();
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> Create(UsuarioDTO usuarioDto)
     {
         if (ModelState.IsValid)
@@ -42,7 +44,7 @@ public class UsuarioController : Controller
         }
         return View(usuarioDto);
     }
-    
+
     [HttpGet("Usuario/cpf/{cpf}")]
     public async Task<IActionResult> GetByCpf(string cpf)
     {
@@ -57,7 +59,7 @@ public class UsuarioController : Controller
     }
 
 
-    [HttpGet]
+    [HttpGet("edit")]
     public async Task<IActionResult> Edit(int id)
     {
         var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
@@ -68,7 +70,7 @@ public class UsuarioController : Controller
         return View(usuario);
     }
 
-    [HttpPost]
+    [HttpPost("edit")]
     public async Task<IActionResult> Edit(UsuarioDTO usuarioDto)
     {
         if (ModelState.IsValid)
@@ -79,7 +81,7 @@ public class UsuarioController : Controller
         return View(usuarioDto);
     }
 
-    [HttpGet]
+    [HttpGet("delete")]
     public async Task<IActionResult> Delete(int id)
     {
         var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
@@ -90,7 +92,7 @@ public class UsuarioController : Controller
         return View(usuario);
     }
 
-    [HttpPost, ActionName("DeleteConfirmed")]
+    [HttpPost("delete"), ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _usuarioService.DeleteUsuarioAsync(id);

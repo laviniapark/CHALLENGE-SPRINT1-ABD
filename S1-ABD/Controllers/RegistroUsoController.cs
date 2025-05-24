@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using S1_ABD.Data;
 using S1_ABD.DTOs;
 using S1_ABD.Service;
 
 namespace S1_ABD.Controllers;
 
+[Route("RegistroUso")]
 public class RegistroUsoController : Controller
 {
     private readonly RegistroUsoService _registroService;
@@ -14,14 +13,15 @@ public class RegistroUsoController : Controller
     {
         _registroService = registroService;
     }
-    
+
+    [HttpGet("")]
     public async Task<IActionResult> Index()
     {
         var registros = await _registroService.GetAllRegistrosAsync();
         return View(registros);
     }
 
-    [HttpGet]
+    [HttpGet("create")]
     public async Task<IActionResult> Create()
     {
         var registroUsoDTO = await _registroService.GetDropdownAsync();
@@ -29,11 +29,11 @@ public class RegistroUsoController : Controller
         return View(registroUsoDTO);
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(RegistroUsoDTO registroDto)
     {
-        Console.WriteLine(registroDto.UsuariosDropdown); 
+        Console.WriteLine(registroDto.UsuariosDropdown);
         Console.WriteLine(registroDto.MotosDropdown);
 
         if (ModelState.IsValid)
@@ -52,7 +52,7 @@ public class RegistroUsoController : Controller
         return View(registroDto);
     }
 
-    [HttpGet]
+    [HttpGet("edit")]
     public async Task<IActionResult> Edit(int id)
     {
         var registro = await _registroService.GetRegistroByIdAsync(id);
@@ -66,7 +66,7 @@ public class RegistroUsoController : Controller
         return View(registro);
     }
 
-    [HttpPost]
+    [HttpPost("edit")]
     public async Task<IActionResult> Edit(RegistroUsoDTO registroDto)
     {
         if (ModelState.IsValid)
@@ -76,8 +76,8 @@ public class RegistroUsoController : Controller
         }
         return View(registroDto);
     }
-    
-    [HttpGet]
+
+    [HttpGet("delete")]
     public async Task<IActionResult> Delete(int id)
     {
         var registro = await _registroService.GetRegistroByIdAsync(id);
@@ -87,8 +87,8 @@ public class RegistroUsoController : Controller
         }
         return View(registro);
     }
-    
-    [HttpPost, ActionName("DeleteConfirmed")]
+
+    [HttpPost("delete"), ActionName("DeleteConfirmed")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _registroService.DeleteRegistroAsync(id);
