@@ -5,6 +5,12 @@
 Este projeto é uma aplicação simples ASP.NET Core MVC que gerencia registros de uso de motos por usuários.
 Inclui funcionalidades de cadastro, listagem, edição, exclusão e busca por CPF.
 
+## Integrantes
+
+RM555679 - Lavinia Soo Hyun Park
+
+RM556242 - Giovanna Laturague Bueno
+
 ## Funcionalidades
 
 - Cadastro de usuários e motos
@@ -81,6 +87,7 @@ Assim que o programa for iniciado, o Swagger irá ser aberto de início.
 
 Para avançar para a página web inicial, basta mudar a URL para: http://localhost:5192/Home
 
+---
 **Agora, podemos começar a testar as funcionalidades!**
 
 *É necessário criar ao menos um cliente e uma moto para que seja possível criar depois o registro.*
@@ -123,4 +130,11 @@ Caso a informação desse cliente exista, uma telinha minimalista irá mostrar a
 ![Retorno CPF encontrado](/img/retorno-cpf-encontrado.png)
 
 ( Testa colocar um que não existe também, por favor :D )
+
+## Tecnologias Utilizadas
+
+- ASP.NET Core 8.0
+- Oracle Entity Framework Core
+- Swagger (Swashbuckle)
+- Razor Pages
 
